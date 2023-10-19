@@ -15,7 +15,14 @@ App.listen(process.env.PORT || 3000, () => {  // changed port to 3000
     console.log(`Server is listening on port ${process.env.PORT || 3000}`);
   });
 
-bot.setWebHook('https://hsa-accountant.onrender.com/telegram-webhook');
+  bot.setWebHook('https://hsa-accountant.onrender.com/telegram-webhook')
+  .then((result) => {
+    console.log('Webhook set successfully:', result);
+  })
+  .catch((error) => {
+    console.error('Error setting webhook:', error);
+  });
+
 
 bot.on('message', (msg) => {
     const chatId = msg.chat.id;
@@ -27,6 +34,7 @@ bot.on('message', (msg) => {
     //     });
     // }
   });
+  
   
 // bot.onText(/\/start/, (msg) => {
 //     const chatId = msg.chat.id;
