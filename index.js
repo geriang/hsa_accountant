@@ -37,7 +37,7 @@ App.post('/telegram-webhook', async (req, res) => {
   }
   if (update.message.photo) {
     const chatId = update.message.chat.id;
-    const image_fileId = update.message.photo.file_id;
+    const image_fileId = update.message.photo[0].file_id;
     // for (i of image){
     //   console.log(`Image from chat ${chatId}: ${i.file_id}`);
     // }
