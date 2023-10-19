@@ -16,7 +16,7 @@ App.listen(process.env.PORT, () => {
   console.log(`Server is listening on port ${process.env.PORT}`);
 });
 
-bot.setWebHook('https://your-app.onrender.com/telegram-webhook');
+bot.setWebHook('https://hsa-accountant.onrender.com/telegram-webhook');
 
 bot.on('message', (msg) => {
     const chatId = msg.chat.id;
