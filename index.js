@@ -10,11 +10,10 @@ const botToken = process.env.telegramBotToken
 const TelegramBot = require('node-telegram-bot-api');
 const bot = new TelegramBot(botToken, {webHook: {port: process.env.PORT}});
 
-// App.use(bot.webHookCallback('/telegram-webhook'));
 
-App.listen(process.env.PORT, () => {
-  console.log(`Server is listening on port ${process.env.PORT}`);
-});
+App.listen(process.env.PORT || 3000, () => {  // changed port to 3000
+    console.log(`Server is listening on port ${process.env.PORT || 3000}`);
+  });
 
 bot.setWebHook('https://hsa-accountant.onrender.com/telegram-webhook');
 
