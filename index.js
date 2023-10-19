@@ -8,7 +8,7 @@ const App = express();
 // Telegram Bot setup
 const botToken = process.env.telegramBotToken
 const TelegramBot = require('node-telegram-bot-api');
-const bot = new TelegramBot(botToken, { polling: true }, {webHook: {port: process.env.PORT}});
+const bot = new TelegramBot(botToken, {webHook: {port: process.env.PORT}});
 
 // App.use(bot.webHookCallback('/telegram-webhook'));
 
