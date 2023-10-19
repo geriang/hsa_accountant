@@ -69,22 +69,20 @@ App.post('/telegram-webhook', async (req, res) => {
         })
 
         console.log(response.data)
+        const GPTresponse = response.data 
+
+        // send response data to telegram
+        const sendMessageApiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`
+        const sendMessageResponse = await axios.post(sendMessageApiUrl, {
+          chat_id: chatId,
+          text: GPTresponse
+        })
+
+        console.log(sendMessageResponse.data)
 
       } catch (error) {
         console.error("error running astica.ai")
       }
-      // axios({
-      //   method: 'post',
-      //   url: 'https://vision.astica.ai/describe',
-      //   data: requestData,
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      // }).then((response) => {
-      //   console.log(response.data);
-      // }).catch((error) => {
-      //   console.log(error);
-      // });
 
 
     } catch (error) {
