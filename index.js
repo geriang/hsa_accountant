@@ -69,7 +69,7 @@ App.post('/telegram-webhook', async (req, res) => {
         })
 
         console.log(response.data)
-        const GPTresponse = response.data 
+        const GPTresponse = response.data.caption_GPTS 
 
         // send response data to telegram
         const sendMessageApiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`
