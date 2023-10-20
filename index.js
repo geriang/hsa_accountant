@@ -12,6 +12,10 @@ const botToken = process.env.telegramBotToken
 const webhookUrl = process.env.telegramWebhook
 const telegramApiUrl = `https://api.telegram.org/bot${botToken}`;
 
+// Google sheet setup
+const { GoogleSpreadsheet } = require('google-spreadsheet');
+const creds = require('./hsa-accounting-4002da4e5a8e.json');  // Replace with the path to your credentials file
+
 
 axios.post(`https://api.telegram.org/bot${botToken}/setWebhook`, {
   url: webhookUrl
@@ -69,7 +73,7 @@ App.post('/telegram-webhook', async (req, res) => {
         })
 
         console.log(response.data)
-        const GPTresponse = response.data.caption_GPTS 
+        const GPTresponse = response.data.caption_GPTS
 
         // send response data to telegram
         const sendMessageApiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`
@@ -83,6 +87,19 @@ App.post('/telegram-webhook', async (req, res) => {
       } catch (error) {
         console.error("error running astica.ai")
       }
+
+      // google sheet 
+      async function accessSpreadsheet() {
+        const doc = new GoogleSpreadsheet('1-5-C52CempgUmZ1qD9WRFdZX_eey9IuObfjzejaLZsc');  // Replace with your Google Sheet ID
+        await doc.useServiceAccountAuth(creds);
+        await doc.loadInfo();  // Loads sheet details
+        console.log(doc.title);
+
+        const sheet = doc.sheetsByIndex[0];
+        await sheet.addRow({ Name: 'John Doe', Age: 25 });  // Adding a row
+      }
+
+      accessSpreadsheet();
 
 
     } catch (error) {
