@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
       console.log(`image file url: ${fileUrl}`)
 
 
-      let aiResponse = processImage(fileUrl)
+      let aiResponse = await processImage(fileUrl)
 
       // send response data to telegram
       const sendMessageApiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`
