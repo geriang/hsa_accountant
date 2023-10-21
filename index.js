@@ -18,7 +18,7 @@ const telegramEndpoint = require("./api/telegram")
 // const {main} = require("./processUpdate")
 const {setWebhookUrl} = require("./telegramWebhook")
 
-main()
+// main()
 
 // Telegram setup
 setWebhookUrl()
