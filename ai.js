@@ -27,7 +27,9 @@ async function processImage(fileUrl) {
     return data
 
   } catch (error) {
+
     console.error("error running astica.ai")
+    
   }
 
 }

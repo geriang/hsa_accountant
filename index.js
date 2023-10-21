@@ -1,21 +1,20 @@
 const express = require('express');
-// const axios = require('axios');
 const bodyParser = require('body-parser')
 require('dotenv').config();
 
 // express setup
 const App = express();
 App.use(bodyParser.json());  // to support JSON-encoded bodies
+App.use(express.json()); // Middleware for parsing JSON bodies of incoming requests
+App.use(express.urlencoded({
+  extended: false
+}))
 
 const telegramEndpoint = require("./api/telegram")
 const {setWebhookUrl} = require("./telegramWebhook")
 
 // Telegram setup
-const botToken = process.env.telegramBotToken
-const webhookUrl = process.env.telegramWebhook
-// const telegramApiUrl = `https://api.telegram.org/bot${botToken}`;
-
-setWebhookUrl(botToken, webhookUrl)
+setWebhookUrl()
 
 App.use('/telegram-webhook', telegramEndpoint);
 
