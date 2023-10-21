@@ -1,5 +1,5 @@
 // sending image to AI model
-const axios = require('axios')
+const axios = require('axios');
 
 // const asticaApi = process.env.asticaApi
 
@@ -28,7 +28,7 @@ async function processImage(fileUrl) {
 
   } catch (error) {
 
-    console.error("error running astica.ai")
+    console.error("error running astica.ai:", error)
     
   }
 

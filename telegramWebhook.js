@@ -5,7 +5,7 @@ const webhookUrl = process.env.telegramWebhook
 async function setWebhookUrl() {
 
     try {
-        const response = axios.post(`https://api.telegram.org/bot${botToken}/setWebhook`, {
+        const response = await axios.post(`https://api.telegram.org/bot${botToken}/setWebhook`, {
             url: webhookUrl
         })
 
