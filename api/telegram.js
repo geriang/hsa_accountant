@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router();
 const axios = require('axios');
-const {updateGoogleSheet} = require("./../sheet")
-const {processImage} = require("./../ai")
+const { updateGoogleSheet } = require("./../sheet")
+const { processImage } = require("./../ai")
 
 // Telegram setup
 const botToken = process.env.telegramBotToken
@@ -42,11 +42,11 @@ router.post('/', async (req, res) => {
         chat_id: chatId,
         text: aiResponse
       })
-  
+
       console.log(sendMessageResponse.data)
 
       await updateGoogleSheet()
-    
+
     } catch (error) {
       console.error('Error retrieving or downloading file:', error);
     }

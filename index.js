@@ -11,10 +11,13 @@ App.use(express.urlencoded({
 }))
 
 const telegramEndpoint = require("./api/telegram")
-const {setWebhookUrl} = require("./telegramWebhook")
+const {main} = require("./processUpdate")
+// const {setWebhookUrl} = require("./telegramWebhook")
+
+main()
 
 // Telegram setup
-setWebhookUrl()
+// setWebhookUrl()
 
 App.use('/telegram-webhook', telegramEndpoint);
 
