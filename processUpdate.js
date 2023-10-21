@@ -1,7 +1,6 @@
 const axios = require('axios');
-require('dotenv').config();
 
-const botToken = process.env.botToken;
+const botToken = process.env.telegramBotToken;
 const telegramApiUrl = `https://api.telegram.org/bot${botToken}`;
 let offset = 0;
 

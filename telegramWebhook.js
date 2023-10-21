@@ -1,5 +1,4 @@
 const axios = require('axios')
-require('dotenv').config();
 
 const botToken = process.env.telegramBotToken
 const webhookUrl = process.env.telegramWebhook
