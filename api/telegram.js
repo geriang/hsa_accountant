@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const axios = require('axios');
+require('dotenv').config();
 const { updateGoogleSheet } = require("./../sheet")
 const { processImage } = require("./../ai")
 
