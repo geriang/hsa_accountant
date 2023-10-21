@@ -1,4 +1,5 @@
 // sending image to AI model
+const axios = require('axios')
 
 async function processImage(fileUrl){
 
