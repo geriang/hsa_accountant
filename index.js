@@ -15,13 +15,13 @@ App.use(cors({
 }))
 
 const telegramEndpoint = require("./api/telegram")
-const {main} = require("./processUpdate")
-// const {setWebhookUrl} = require("./telegramWebhook")
+// const {main} = require("./processUpdate")
+const {setWebhookUrl} = require("./telegramWebhook")
 
 main()
 
 // Telegram setup
-// setWebhookUrl()
+setWebhookUrl()
 
 App.use('/telegram-webhook', telegramEndpoint);
 
