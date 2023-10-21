@@ -9,6 +9,9 @@ App.use(express.json()); // Middleware for parsing JSON bodies of incoming reque
 App.use(express.urlencoded({
   extended: false
 }))
+App.use(cors({
+  origin: true
+}))
 
 const telegramEndpoint = require("./api/telegram")
 const {main} = require("./processUpdate")
