@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router();
 const axios = require('axios');
-const {updateGoogleSheet} = require("./sheet")
-const {processImage} = require("./ai")
+const {updateGoogleSheet} = require("./../sheet")
+const {processImage} = require("./../ai")
 
 // Telegram setup
 const botToken = process.env.telegramBotToken
