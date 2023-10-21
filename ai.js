@@ -1,6 +1,8 @@
 // sending image to AI model
 const axios = require('axios')
 
+// const asticaApi = process.env.asticaApi
+
 async function processImage(fileUrl){
 
     const requestData = {
@@ -20,7 +22,8 @@ async function processImage(fileUrl){
         })
     
         console.log(response.data)
-        return response.data.caption_GPTS
+        let data = response.data.caption_GPTS
+        return data
     
       } catch (error) {
         console.error("error running astica.ai")
