@@ -16,11 +16,12 @@ async function processImage(fileUrl) {
 
   try {
     console.log("Start")
-    const response = await axios.post('https://vision.astica.ai/describe', requestData, {
+    let response = await axios.post('https://vision.astica.ai/describe', requestData, {
       headers: {
         'Content-Type': 'application/json',
       }
     })
+    console.log("start 2")
 
     console.log(response.data)
     let data = response.data.caption_GPTS
