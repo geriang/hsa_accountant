@@ -25,8 +25,8 @@ async function updateGoogleSheet(chatId, text) {
   const teddySheet = doc.sheetsByIndex[1];
   const jamesSheet = doc.sheetsByIndex[2];
 
-  let data = text
-  let lines = data.split("\n")
+  console.log("Text the googlesheet receives", text)
+  let lines = text.split("\n")
   let date = lines[0].split(": ")[1]
   let item = lines[1].split(": ")[1]
   let cost = lines[2].split(": ")[1]
