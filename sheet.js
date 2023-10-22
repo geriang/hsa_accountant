@@ -2,7 +2,7 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 const { JWT } = require('google-auth-library');
 
 
-async function updateGoogleSheet(chatId, text) {
+async function updateGoogleSheet(userId, text) {
 
   // Initialize auth - see https://theoephraim.github.io/node-google-spreadsheet/#/guides/authentication
   const serviceAccountAuth = new JWT({
@@ -34,9 +34,9 @@ async function updateGoogleSheet(chatId, text) {
   let vendor = lines[3].split(": ")[1]
 
   console.log("date", date, "item", item, "cost", cost, "vendor", vendor)
-  console.log("Chat ID googlesheet receives", chatId)
+  console.log("User ID googlesheet receives", userId)
 
-  if (chatId === -1002021442315) {
+  if (userId === -1002021442315) {
     console.log("geri")
     const geriRow = await geriSheet.addRow({ "Date": date, "Item Description": item, "Cost": cost, "Vendor": vendor })
     await geriRow.save()

@@ -15,14 +15,17 @@ router.post('/', async (req, res) => {
   if (update.message.text) {
     const chatId = update.message.chat.id;
     const text = update.message.text;
-    console.log(`Message from chat ${chatId}: ${text}`);
+    const userId = update.message.from.id
+    console.log(`Message from chat ${chatId}: ${text}`, "user:", userId);
+    console.log(update.message)
   }
   if (update.message.photo) {
     const chatId = update.message.chat.id;
+    const userId = update.message.from.id
     const image_files = update.message.photo
     const highest_res = image_files[image_files.length - 1]
     const image_fileId = highest_res.file_id
-    console.log(`Message from chat ${chatId}: ${image_fileId}`)
+    console.log(`Message from chat ${chatId}: ${image_fileId}`, "user:", userId);
 
     try {
       // Get file path from Telegram
@@ -36,16 +39,19 @@ router.post('/', async (req, res) => {
 
       let aiResponse = await processImage(fileUrl)
 
+      await updateGoogleSheet(userId, aiResponse)
+
       // send response data to telegram
       const sendMessageApiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`
       const sendMessageResponse = await axios.post(sendMessageApiUrl, {
         chat_id: chatId,
+        user_id: userId,
         text: aiResponse
       })
 
       console.log(sendMessageResponse.data)
 
-      await updateGoogleSheet(chatId, aiResponse)
+      
 
     } catch (error) {
       console.error('Error retrieving or downloading file:', error);
