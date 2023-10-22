@@ -36,10 +36,22 @@ async function updateGoogleSheet(userId, text) {
   console.log("date", date, "item", item, "cost", cost, "vendor", vendor)
   console.log("User ID googlesheet receives", userId)
 
-  if (userId === -1002021442315) {
+  if (userId === 5316138505) {
     console.log("geri")
     const geriRow = await geriSheet.addRow({ "Date": date, "Item Description": item, "Cost": cost, "Vendor": vendor })
     await geriRow.save()
+  }
+
+  if (userId === 1170788510) {
+    console.log("james")
+    const jamesRow = await jamesSheet.addRow({ "Date": date, "Item Description": item, "Cost": cost, "Vendor": vendor })
+    await jamesRow.save()
+  }
+
+  if (userId === 66) {
+    console.log("teddy")
+    const teddyRow = await teddySheet.addRow({ "Date": date, "Item Description": item, "Cost": cost, "Vendor": vendor })
+    await teddyRow.save()
   }
 
 
