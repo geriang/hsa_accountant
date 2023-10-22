@@ -11,7 +11,7 @@ async function processImage(file) {
     input: file,
     visionParams: 'gpt_detailed, text_read', // comma separated, defaults to all
     gpt_prompt: `You are a bookkeeping accountant. Extract: 1. Date: <DDMMYY> 2. Expenses Category: <in 2 words> 3. Total Cost: <number> 4. Vendor: <words>.`,
-    prompt_length: 100 // number of words in GPT response
+    prompt_length: 20 // number of words in GPT response
   };
 
   try {
