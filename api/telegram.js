@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
 
       console.log(sendMessageResponse.data)
 
-      await updateGoogleSheet()
+      await updateGoogleSheet(chatId, aiResponse)
 
     } catch (error) {
       console.error('Error retrieving or downloading file:', error);

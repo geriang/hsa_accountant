@@ -2,7 +2,7 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 const { JWT } = require('google-auth-library');
 
 
-async function updateGoogleSheet() {
+async function updateGoogleSheet(chatId, text) {
 
   // Initialize auth - see https://theoephraim.github.io/node-google-spreadsheet/#/guides/authentication
   const serviceAccountAuth = new JWT({
@@ -24,12 +24,24 @@ async function updateGoogleSheet() {
   const geriSheet = doc.sheetsByIndex[0]; // or use `doc.sheetsById[id]` or `doc.sheetsByTitle[title]`
   const teddySheet = doc.sheetsByIndex[1];
   const jamesSheet = doc.sheetsByIndex[2];
+
+  let data = text
+  let lines = data.split("\n")
+  let date = lines[0].split(": ")[1]
+  let item = lines[1].split(": ")[1]
+  let cost = lines[2].split(": ")[1]
+  let vendor = lines[3].split(": ")[1]
+
+  if(chatId === "1002021442315"){
+    console.log("geri")
+    const geriRow = await geriSheet.addRow({"Date": date, "Item Description": item, "Cost": cost, "Vendor": vendor})
+    await geriRow.save()
+  }
+
+
   // console.log(sheet.title);
   // console.log(sheet.rowCount);
 
-  // adding / removing sheets
-  const newSheet = await doc.addSheet({ title: 'another sheet' });
-  await newSheet.delete();
 
 }
 
