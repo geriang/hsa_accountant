@@ -26,18 +26,23 @@ async function updateGoogleSheet(chatId, text) {
   const jamesSheet = doc.sheetsByIndex[2];
 
   console.log("Text the googlesheet receives", text)
+  // if(text.includes("\n")){
   let lines = text.split("\n")
   let date = lines[0].split(": ")[1]
   let item = lines[1].split(": ")[1]
   let cost = lines[2].split(": ")[1]
   let vendor = lines[3].split(": ")[1]
+  // }else{
+
+  // }
+
 
   console.log("date", date, "item", item, "cost", cost, "vendor", vendor)
 
 
-  if(chatId === -1002021442315){
+  if (chatId === 1002021442315) {
     console.log("geri")
-    const geriRow = await geriSheet.addRow({"Date": date, "Item Description": item, "Cost": cost, "Vendor": vendor})
+    const geriRow = await geriSheet.addRow({ "Date": date, "Item Description": item, "Cost": cost, "Vendor": vendor })
     await geriRow.save()
   }
 
@@ -49,4 +54,4 @@ async function updateGoogleSheet(chatId, text) {
 }
 
 
-module.exports = {updateGoogleSheet}
+module.exports = { updateGoogleSheet }
