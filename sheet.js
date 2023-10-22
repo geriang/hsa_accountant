@@ -32,7 +32,10 @@ async function updateGoogleSheet(chatId, text) {
   let cost = lines[2].split(": ")[1]
   let vendor = lines[3].split(": ")[1]
 
-  if(chatId === "1002021442315"){
+  console.log("date", date, "item", item, "cost", cost, "vendor", vendor)
+
+
+  if(chatId === "-1002021442315"){
     console.log("geri")
     const geriRow = await geriSheet.addRow({"Date": date, "Item Description": item, "Cost": cost, "Vendor": vendor})
     await geriRow.save()
