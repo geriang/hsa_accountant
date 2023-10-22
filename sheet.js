@@ -35,7 +35,7 @@ async function updateGoogleSheet(chatId, text) {
   console.log("date", date, "item", item, "cost", cost, "vendor", vendor)
 
 
-  if(chatId === "-1002021442315"){
+  if(chatId === -1002021442315){
     console.log("geri")
     const geriRow = await geriSheet.addRow({"Date": date, "Item Description": item, "Cost": cost, "Vendor": vendor})
     await geriRow.save()
