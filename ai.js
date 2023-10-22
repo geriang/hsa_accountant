@@ -10,8 +10,7 @@ async function processImage(file) {
     modelVersion: '2.1_full', // 1.0_full, 2.0_full, or 2.1_full
     input: file,
     visionParams: 'gpt_detailed, text_read', // comma separated, defaults to all
-    gpt_prompt: "You are a book keeping accountant. Retrieve any date, time, vendor or shop name, purchased items and the cost depicted",
-    // `As a bookkeeping accountant, indentify: 1. Transaction Date 2. Item/Service Description 3. Total Cost paid 4. Vendor Name`,
+    gpt_prompt: `As a bookkeeping accountant, indentify and output in this format: 1. Transaction Date 2. Summarised Item/Service Description 3. Total Cost paid 4. Vendor Name`,
     prompt_length: 95 // number of words in GPT response
   };
 
