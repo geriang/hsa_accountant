@@ -48,7 +48,7 @@ async function updateGoogleSheet(userId, text) {
     await jamesRow.save()
   }
 
-  if (userId === 66) {
+  if (userId === 1066478719) {
     console.log("teddy")
     const teddyRow = await teddySheet.addRow({ "Date": date, "Item Description": item, "Cost": cost, "Vendor": vendor })
     await teddyRow.save()
